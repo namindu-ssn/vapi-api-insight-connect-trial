@@ -1,61 +1,276 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>VAPI</title>
+    <title>Sultan Ahmet Restaurant - AI Assistant</title>
     <meta charset="UTF-8" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <style>
+      :root {
+        --primary-color: #e63946;
+        --secondary-color: #1d3557;
+        --accent-color: #f1faee;
+        --dark-bg: #1d3557;
+        --light-text: #f1faee;
+        --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      
+      body {
+        font-family: var(--font-family);
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+      
+      .header {
+        background-color: var(--dark-bg);
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+      
+      .logo {
+        height: 40px;
+        margin-right: 15px;
+      }
+      
+      .header-title {
+        color: var(--light-text);
+        margin: 0;
+        font-size: 1.2rem;
+      }
+      
+      .header-subtitle {
+        color: #a8dadc;
+        margin: 0;
+        font-size: 0.9rem;
+      }
+      
+      .content {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      
+      .demo-panel {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        overflow: hidden;
+      }
+      
+      .panel-header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 1rem;
+        font-weight: 600;
+      }
+      
+      .panel-content {
+        padding: 2rem;
+      }
+      
       .vapi-btn {
-        position: "relative";
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: fit-content;
-        margin: 100px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin: 1rem 0;
+      }
+      
+      .vapi-btn:hover {
+        background-color: #d62b39;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+      }
+      
+      .action-button {
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .action-button:hover {
+        background-color: #162a46;
+        transform: translateY(-2px);
+      }
+      
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      
+      .feature-card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      }
+      
+      .feature-icon {
+        background-color: rgba(230, 57, 70, 0.1);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      
+      .feature-title {
+        color: var(--secondary-color);
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      footer {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        padding: 1.5rem;
+        text-align: center;
+        margin-top: 3rem;
+      }
+      
+      .footer-logo {
+        height: 30px;
+        margin-bottom: 1rem;
+      }
+      
+      .footer-text {
+        font-size: 0.85rem;
+        opacity: 0.8;
       }
     </style>
   </head>
   <body>
-    <button id="log-action" onClick="logUserAction()">Log Action</button>
+    <header class="header">
+      <div class="logo-container">
+        <img src="https://syncroserve.com/assets/images/logo-white.png" alt="SyncroServe Logo" class="logo">
+        <div>
+          <h1 class="header-title">Sultan Ahmet Restaurant</h1>
+          <p class="header-subtitle">AI Assistant Demo - Alex</p>
+        </div>
+      </div>
+    </header>
+    
+    <div class="content">
+      <div class="demo-panel">
+        <div class="panel-header">
+          Restaurant Voice Assistant
+        </div>
+        <div class="panel-content">
+          <p>Experience our intelligent voice assistant powered by SyncroServe technology. Get instant answers about our menu, specials, hours, and make reservations with ease.</p>
+          
+          <button id="log-action" class="action-button" onClick="logUserAction()">Try Special Prompt</button>
+        </div>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2">
+              <circle cx="12" cy="8" r="5"></circle>
+              <path d="M20 21v-2a7 7 0 0 0-14 0v2"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Personalized Experience</h3>
+          <p>Our AI Assistant remembers your preferences and provides tailored recommendations.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v6l4 2"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Instant Responses</h3>
+          <p>Get quick answers about our menu, hours, special offers, and more in real-time.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Multilingual Support</h3>
+          <p>Our assistant speaks multiple languages to serve our diverse customers effectively.</p>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <img src="https://syncroserve.com/assets/images/logo-white.png" alt="SyncroServe Logo" class="footer-logo">
+      <p class="footer-text">© 2025 Sultan Ahmet Restaurant. AI Assistant powered by SyncroServe.</p>
+    </footer>
 
     <script>
-      const assistant = "6e5de015-6983-4bf5-ac44-d18c19076ae2"; // Replace with your assistant ID
-      const apiKey = "%VITE_APP_VAPI_API_TOKEN%"; // Replace with your API key
+      const assistant = "de0113b9-a2b2-4343-b639-da3de01c0bb4"; // Replace with your assistant ID
+      const apiKey = "dac9799a-2964-4387-9cb6-db0fcd8e16c0"; // Replace with your API key
 
       var vapiInstance = null;
 
       const assistantOverrides = {
-        firstMessage: "How may I assist you?",
-      }; // Assistant Overrides Let u override some of the assistant Configurations. This can be used alongside assistantId
+        firstMessage: "Welcome to Sultan Ahmet Restaurant! I am Alex, How may I assist you today?",
+      };
 
       const buttonConfig = {
-        position: "bottom-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
-        offset: "10px", // decide how far the button should be from the edge
-        width: "200px", // min-width of the button
-        height: "50px", // height of the button
+        position: "bottom-right",
+        offset: "20px",
+        width: "220px",
+        height: "60px",
         zIndex: 2147483647,
         idle: {
-          // button state when the call is not active.
-          color: `rgb(76, 173, 47)`,
-          type: "pill", // or "round"
-          // title: "¿Tienes una pregunta rápida?", // only required in case of Pill
-          // subtitle: "Habla con nuestro asistente de IA", // only required in case of pill
-          icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone.svg`,
+          color: `#e63946`,
+          type: "pill",
+          title: "Need assistance?", 
+          subtitle: "Talk to our restaurant AI",
+          icon: `https://unpkg.com/lucide-static@0.321.0/icons/chef-hat.svg`,
         },
         loading: {
-          // button state when the call is connecting
-          color: `rgb(93, 124, 202)`,
-          type: "pill", // or "round"
-          // title: "Conectando...", // only required in case of Pill
-          // subtitle: "Por favor, espera", // only required in case of pill
+          color: `#1d3557`,
+          type: "pill",
+          title: "Connecting...", 
+          subtitle: "Please wait",
           icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
         },
         active: {
-          // button state when the call is in progress or active.
-          color: `rgb(255, 0, 0)`,
-          type: "pill", // or "round"
-          // title: "Llamada en curso...", // only required in case of Pill
-          // subtitle: "Fin de la llamada", // only required in case of pill
+          color: `#457b9d`,
+          type: "pill",
+          title: "Conversation active", 
+          subtitle: "Click to end",
           icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg`,
         },
       };
@@ -65,23 +280,19 @@
           s = d.getElementsByTagName(t)[0];
         g.src =
           "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-        // g.src = './src/index.js'
-        // g.type = "module";
         g.defer = true;
         g.async = true;
         s.parentNode.insertBefore(g, s);
 
         g.onload = function () {
           const vapi = window.vapiSDK.run({
-            apiKey: apiKey, // required
-            // squad: 'e49a15d9-f6dc-4010-a05a-611adbfb3aaa',
-            assistant: assistant, // required
-            assistantOverrides: assistantOverrides, // optional
-            config: buttonConfig, // optional
+            apiKey: apiKey,
+            assistant: assistant,
+            assistantOverrides: assistantOverrides,
+            config: buttonConfig,
           });
 
           if (vapi) {
-            // Extend more using vapi
             window.vapiSDK.vapi = vapi;
             vapiInstance = vapi;
 
@@ -105,7 +316,6 @@
               console.log(`Assistant volume level: ${volume}`);
             });
 
-            // Function calls and transcripts will be sent via messages
             vapiInstance.on("message", (message) => {
               console.log(message);
             });
@@ -118,14 +328,12 @@
       })(document, "script");
 
       function logUserAction() {
-        // Function to log the user action
-
         if (window.vapiSDK.vapi)
           window.vapiSDK.vapi.send({
             type: "add-message",
             message: {
               role: "system",
-              content: "The user has pressed the button, say peanuts",
+              content: "The customer would like to hear about today's special Turkish dishes and available reservation times for dinner.",
             },
           });
         else {
