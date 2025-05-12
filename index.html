@@ -31,15 +31,49 @@
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       }
       
+      /* Logo */
       .logo-container {
         display: flex;
         align-items: center;
+        gap: 15px;
+        margin-bottom: 10px;
       }
-      
+
       .logo {
-        height: 40px;
-        margin-right: 15px;
+        height: 30px;
+        cursor: pointer;
       }
+
+      .text-section {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header-title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .header-subtitle {
+        margin: 0;
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      .powered-by {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        font-size: 12px;
+        color: #999;
+      }
+
+      .powered-logo {
+        height: 35px;
+      }
+
       
       .header-title {
         color: var(--light-text);
@@ -175,61 +209,28 @@
   </head>
   <body>
     <header class="header">
+      <!-- Left: Trigger Icon -->
       <div class="logo-container">
-        <img src="https://syncroserve.com/assets/images/logo-white.png" alt="SyncroServe Logo" class="logo">
-        <div>
+        <a href="https://www.triggericon.com" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.triggericon.com/wp-content/uploads/2023/10/logo-dark-1.svg" alt="Trigger Icon Logo" class="logo">
+        </a>
+        <div class="text-section">
           <h1 class="header-title">Sultan Ahmet Restaurant</h1>
           <p class="header-subtitle">AI Assistant Demo - Alex</p>
         </div>
       </div>
-    </header>
     
-    <div class="content">
-      <div class="demo-panel">
-        <div class="panel-header">
-          Restaurant Voice Assistant
-        </div>
-        <div class="panel-content">
-          <p>Experience our intelligent voice assistant powered by SyncroServe technology. Get instant answers about our menu, specials, hours, and make reservations with ease.</p>
-          
-          <button id="log-action" class="action-button" onClick="logUserAction()">Try Special Prompt</button>
-        </div>
+      <!-- Right: Powered by SyncroServe -->
+      <div class="powered-by" style="align-items: flex-end; text-align: right;">
+        <span>Powered by</span>
+        <a href="https://syncroserve.com" target="_blank" rel="noopener noreferrer">
+          <img src="https://syncroserve.com/assets/images/logo-white.png" alt="SyncroServe Logo" class="powered-logo">
+        </a>
       </div>
-      
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2">
-              <circle cx="12" cy="8" r="5"></circle>
-              <path d="M20 21v-2a7 7 0 0 0-14 0v2"></path>
-            </svg>
-          </div>
-          <h3 class="feature-title">Personalized Experience</h3>
-          <p>Our AI Assistant remembers your preferences and provides tailored recommendations.</p>
-        </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 6v6l4 2"></path>
-            </svg>
-          </div>
-          <h3 class="feature-title">Instant Responses</h3>
-          <p>Get quick answers about our menu, hours, special offers, and more in real-time.</p>
-        </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e63946" stroke-width="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
-          </div>
-          <h3 class="feature-title">Multilingual Support</h3>
-          <p>Our assistant speaks multiple languages to serve our diverse customers effectively.</p>
-        </div>
-      </div>
-    </div>
+    </header>
+  
+    <iframe src="https://mississauga.sultanahmet.ca" width="100%" height="2000px" frameborder="0"></iframe>
+
     
     <footer>
       <img src="https://syncroserve.com/assets/images/logo-white.png" alt="SyncroServe Logo" class="footer-logo">
@@ -237,8 +238,8 @@
     </footer>
 
     <script>
-      const assistant = "de0113b9-a2b2-4343-b639-da3de01c0bb4"; // Replace with your assistant ID
-      const apiKey = "dac9799a-2964-4387-9cb6-db0fcd8e16c0"; // Replace with your API key
+      const assistant = "3f7a3e84-b778-4228-900b-63ec45e7096f"; // Replace with your assistant ID
+      const apiKey = "a15fd805-4b88-4b22-bc67-7ada547462fc"; // Replace with your API key
 
       var vapiInstance = null;
 
@@ -255,7 +256,7 @@
         idle: {
           color: `#e63946`,
           type: "pill",
-          title: "Need assistance?", 
+          title: "Call our restuarent now!", 
           subtitle: "Talk to our restaurant AI",
           icon: `https://unpkg.com/lucide-static@0.321.0/icons/chef-hat.svg`,
         },
